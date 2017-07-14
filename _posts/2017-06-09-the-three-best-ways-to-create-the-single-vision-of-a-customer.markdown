@@ -20,8 +20,8 @@ tags:
 - vision
 - auth0
 related:
-- 2016-09-22-yahoo-confirms-data-breach-of-half-a-billion-user-accounts
-- 2016-08-16-how-real-state-companies-can-implement-open-id-connect-with-auth0
+- 2017-06-19-how-to-keep-up-with-hyperconnected-consumers
+- 2017-05-26-go-beyond-username-password-with-modern-auth
 - 2017-02-08-is-multifactor-authentication-the-best-way-to-secure-your-accounts-myths-and-reality
 ---
 
@@ -31,15 +31,15 @@ In a retail world with this much choice and this much freedom for a consumer, it
 
 But you need a single vision of your customers for everything from sales to streamlining your digital experience. That means powerful systems that offer you the ability to track customers, centralize their information, and move their data internally to make this happen.
 
-A cornerstone of this is your identity management system. Here are three key ways that your CIAM fuels your cross-channel retail strategy.
+A cornerstone of this is your identity management system. Here are three key ways that your [CIAM](https://auth0.com/retail/) fuels your cross-channel retail strategy.
 
 ## Must-have #1: Centralized Identity Management
 
 A single vision of your customers begins with a single digital identity, each customer has their information stored in one central profile.
 
-This calls for an identity management system that can handle logins from any device and funnel information on customers directly to their profile.
+This calls for [an identity management system](https://auth0.com/user-management) that can handle logins from any device and funnel information on customers directly to their profile.
 
-For retailers, Auth0 creates a single profile for every user in your system, and it can store information on their logins, their devices, their history, and centralize other data you want available on customers. You can link accounts back together, so if a user uses Facebook login one time and Google the next, their info still gets back to one profile.
+[For retailers](https://auth0.com/retail/), Auth0 creates a single profile for every user in your system, and it can store information on their logins, their devices, their history, and centralize other data you want available on customers. You can link accounts back together, so if a user uses Facebook login one time and Google the next, their info still gets back to one profile.
 
 ![Central Profile](https://cdn.auth0.com/blog/vision/central-profile.png)
 
@@ -47,7 +47,7 @@ You're creating the base for the single vision of your customers by using a sing
 
 For customers, this helps make the experience of engaging with your brand consistent. Any preferences they set and any information they give you can be used across all your channels.
 
-To scale your centralized identity management with your business, Auth0 has a flexible user store directory model, so you can host your directory in the highly secure Auth0 server. You can also choose to use your own existing directory. If you ever want to migrate to the Auth0 database, you can do so without requiring a password reset. No matter what your retail size or needs, there's a way to get that must-have centralized CIAM.
+[To scale your centralized identity management with your business](https://auth0.com/learn/marks-spencer-auth0-authentication-scalability-in-action/), Auth0 has a flexible user store directory model, so you can host your directory in the highly secure Auth0 server. You can also choose to use your own existing directory. If you ever want to migrate to the Auth0 database, you can do so without requiring a password reset. No matter what your retail size or needs, there's a way to get that must-have centralized CIAM.
 
 ## Must-have #2: Omnichannel Customer Experience
 
@@ -61,7 +61,7 @@ Login through a CIAM is a great way to streamline your customers' first interact
 
 * **Enable single sign-on for every brand on every channel.** Regardless of the channel or identity provider the customer uses, there should be a quick, consistent option for them every time they have to log in. That should include in-store access to their account.
 
-* **Give people a social login option, every time.** The benefits of social login are twofold. Customers can easily access their account without having to make a new username and password. They will also benefit from the ease of personal devices where they are virtually never logged out of social, making social login functionally a one-click option. Retailers can benefit from the additional data available from social providers and use that to better connect with their customers.
+* **Give people a social login option, every time.** [The benefits of social login are twofold](https://auth0.com/blog/social-login-on-the-rise/). Customers can easily access their account without having to make a new username and password. They will also benefit from the ease of personal devices where they are virtually never logged out of social, making social login functionally a one-click option. Retailers can benefit from the additional data available from social providers and use that to better connect with their customers.
 
 * **Use your user profile as a starting point throughout your company.** Since your CIAM is now a central store for information from multiple channels, it should be used as a source of information company-wide. That means that in-store associates can bring up their profile to help them and that your marketers can show them ads for products they actually like.
 
