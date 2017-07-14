@@ -30,7 +30,7 @@ related:
 
 After months and months of developing your new app, it's finally ready to launch. You feel confident that you've got all the features and functionality you need. But with all of that work, you've let your login fall by the wayside. A simple a username and a password will do the trick, right? 
 
-Wrong. In the age of modern authentication, you need to go beyond usernames and passwords to protect customer information and give users frictionless logins that they trust. Embracing login as identity management rather than as a simple gate to access is imperative.
+Wrong. In the age of modern authentication, [you need to go beyond usernames and passwords](https://auth0.com/blog/modern-authentication-for-your-clients-made-easy/) to protect customer information and give users frictionless logins that they trust. Embracing login as identity management rather than as a simple gate to access is imperative.
 
 Here's what you need to know.
 
@@ -69,7 +69,7 @@ From the Auth0 dashboard, go to Connections > Enterprise to view available conne
 
 ![Auth0 enterprise connections dashboard](https://cdn.auth0.com/blog/userpass/auth0-enterprise.png)
 
-With this platform, enterprises can monitor user accounts from one central dashboard.
+With this platform, [enterprises can monitor user accounts](https://auth0.com/user-management) from one central dashboard.
 
 ## Make Security a Top Priority
 
@@ -95,4 +95,4 @@ Now more than ever, authentication involves more than just supporting usernames 
 
 Usernames and passwords aren't going to disappear, but authentication is complex, and it's only going to get harder to manage. 
 
-There's no need to struggle to keep up using in-house solutions when you can rely on experts that live and breathe identity management. Your IAM solution can support everything you want to offer your users, while letting you focus on the product that got users to sign up in the first place.
+There's no need to struggle to keep up using in-house solutions when you can rely on experts that live and breathe identity management. Your IAM solution can support everything you want to offer your users, while letting you focus on the product that got users to sign up in the first place. [Try Auth0 for free now](https://auth0.com/pricing) and get started with modern authentication!
