@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "ReactJS Authentication Tutorial"
-description: Learn how to quickly build apps with ReactJS and add authentication the right way.
+title: "BackboneJS Authentication Tutorial"
+description: Learn how to quickly build apps with BackboneJS and add authentication the right way.
 date: 2017-02-21 8:30
-category: Technical Guide, Frontend, ReactJS
+category: Technical Guide, Frontend, BackboneJS
 author:
   name: Prosper Otemuyiwa
   url: https://twitter.com/unicodeveloper?lang=en
@@ -27,207 +27,293 @@ related:
 
 ---
 
-**TL;DR:** ReactJS is a declarative, efficient and flexible JavaScript library for building user interfaces. Currently, ReactJS has over 58,000 stars on [GitHub](https://github.com/facebook/react). ReactJS makes it easy for you to build your web applications in the form of encapsulated components that manage their own state. In this tutorial, I'll show you how easy it is to build a web application with ReactJS and add authentication to it. Check out the [repo](https://github.com/auth0-blog/reactjs-authentication-tutorial) to get the code.
+**TL;DR:** BackboneJS is a JavaScript library that provides models with key-value bindings and custom events, views with declarative event handling, and collections with an abundant API of enumerable functions. Currently, BackboneJS has over 25,000 stars on [GitHub](https://github.com/jashkenas/backbone). BackboneJS gives your web applications structure. In this tutorial, I'll show you how to build a web application with BackboneJS and add authentication to it. Check out the [repo](https://github.com/auth0-blog/backbonejs-authentication-tutorial) to get the code.
 
 ---
 
-**ReactJS** is a JavaScript library, built and maintained by Facebook. It was developed by [Jordan Walke](https://twitter.com/jordwalke), a software engineer at Facebook. It was open-sourced and announced to the developer community in March 2015. Since then, it has undergone tremendous growth and adoption in the developer community. In fact, as at the time of writing, **ReactJS** is the 5th most starred project of all time on GitHub.
+**BackboneJS** is a JavaScript library, built by [Jeremy Ashkenas](https://github.com/jashkenas) and maintained by a team of contributors. It is an open source component of [DocumentCloud](http://documentcloud.org). It was initially released in 2010. Since then, it has undergone tremendous growth and adoption in the developer community. Over the past 2 years, the use of Backbone have declined due to new libraries and framework like ReactJS, Vue.js and Angular. The latest stable release is 1.3.3 and it was tagged on April 5, 2016. Actively used open source projects and libraries tag releases very often, which signifies growth. However, **BackboneJS** has been stagnant for over a year now!
 
-Currently, many web platforms use **ReactJS** to build their user interfaces. Such platforms include *Netflix*, *Instagram*, *Airbnb*, *KhanAcademy*, *Walmart* and more. The [documentation](https://facebook.github.io/react) is very detailed, and there is a vibrant community of users. In addition, a plethora of **ReactJS** addons exist on GitHub for easy inclusion in your project for whatever functionality you are trying to build.
+Furthermore, there are many web platforms that use BackboneJS to build their frontends. Such platforms include *Trello*, *Bitbucket*, *Foursquare*, *SeatGeek* and more. The [documentation](http://backbonejs.org) is very comrehensive.
 
-## Understanding Key Concepts in ReactJS
+## Understanding Key Concepts in BackboneJS
 
-**ReactJS** was influenced by **XHP**, an augmentation of [PHP](https://github.com/php/php-src) and [Hack](http://hacklang.org) to allow XML syntax for the purpose of creating custom and reusable HTML elements. If you're coming from the world of [jQuery](https://jquery.com) and don't have experience with frameworks like Angular, Ember, or VueJS, you may find **ReactJS** very confusing. There are many questions you might have to ask yourself, such as:
+**BackboneJS** has a philosophy: `Keep Business logic separate from User Interface`. When the two are entangled, change is hard. The key concepts needed to understand how BackboneJS works are:
 
-* Why are JavaScript and HTML together in one script?
-* What is JSX? Why is the syntax so weird?
-* What is a state?
-* Why do we need props?
-* What are and why do we need components in our apps?
+* **Models**
+* **Views**
+* **Collections**
+* **Events**
 
-Don't worry, you'll have answers to your many questions soon! There are some key concepts you need to know when learning React. Once you have a basic understanding of these concepts, then you'll be able to create your first **ReactJS** app without banging your head on the wall.
+I'll give a basic overview of these concepts to nourish your understanding of **BackboneJS**.
 
-These key concepts are:
+### Models
 
-* **Components - The Types and API** 
-* **Props**
-* **State**
-* **JSX**
+A Model is a layer that transforms and syncs data with a persistence layer (mostly RESTful API interacting with a database). They contain all the helpful functions needed to manipulate some piece of data from the persistence layer. When any of its data is modified, Models trigger `change` events.
 
-I'll give a basic overview of these concepts to nourish your understanding of **ReactJS**.
+Consider a Model as a sort of manipulator. Instead of directly interacting with the data from your API, it serves as a layer that allows you easily manipulate every tiny piece of data in a very friendly and fantastic way.
 
-### Components - The Types and API
-
-React is basically about components. A ReactJS app is just one big component made up of interoperable smaller components. Working with ReactJS means you are thinking in components most of the time.
-
-An example of a component is an HTML 5 tag, say `<header>`. A header can have attributes, it can be styled and also possess its own behaviour. In **ReactJS**, you'll be able to build your own custom component using [**ES6**](https://auth0.com/blog/a-rundown-of-es6-features/) like so:
+Here's a simple case study: Imagine we are in charge of a gift shop and we need to build a database of the gifts that we sell. We need to keep track of the stock of those gifts. Details like the price, brand, stock and type.
 
 ```js
 
-class CustomComponent extends React.Component {
-   render() {
-      return '<h3> This is my custom component!!!</h3>';
-   }
-}
+var Shop = Backbone.Model.extend({
+
+});
 
 ```
 
-So, your component will now be `<CustomComponent></CustomComponent>`.
-
-React provides some methods that are triggered at various points from creating a component up until the component is destroyed. This is called the [Component's Lifecycle](https://facebook.github.io/react/docs/state-and-lifecycle.html). You can declare methods to hook into the component's lifecycle to control the behaviour of components in your app. Some examples of these lifecycle hooks are `componentDidMount()`, `componentWillMount()`, `componentWillUnmount()`, `shouldComponentUpdate()`, `componentWillUpdate()` and more. 
-
-* **componentWillMount()** : This method is called before the component is initially rendered. So it is called before the `render` method is executed. You can't perform any type of DOM manipulation here because the component isn't available in the DOM yet.
-* **componentDidMount()** : This method is called right after the component has been rendered. So it is called immediately after the `render` method has been executed. It's the best place to perform network and AJAX calls.
-* **componentWillUnmount()** : This method is called right before the component is removed from the DOM.
-* **shouldComponentUpdate()** : This method determines if a re-rendering should occur or not. It is never called on initial rendering and it's always called before the render method.
-* **componentWillUpdate()** : This method is called as soon as `shouldComponentUpdate` returns true. It is called just before the component is rendered with new data.
-
-There are also methods like [`render`](https://facebook.github.io/react/docs/rendering-elements.html) and [`setState`](https://facebook.github.io/react/docs/state-and-lifecycle.html) that you can use to render an element on the DOM and set the state of a component respectively. 
-
-Take this example for a spin and watch how these lifecycle hooks work. Observe the sequence of logs in the browser console.
+Now, we can create an instance of the Shop model and populate it like so:
 
 ```js
-
-import React, { Component } from 'react';
-import { render } from 'react-dom';
-
-class Experiment extends Component {
-
-  componentWillMount() {
-    console.log("This will mount");
-  }
-
-  componentDidMount() {
-    console.log("This did mount");
-  }
-
-  componentWillUnmount() {
-    console.log("This will unmount");
-  }
-
-  render() {
-    console.log("I am just rendering like a boss");
-    return <div>I got rendered!</div>;
-  }
-  
-}
-
-render(
-  <Experiment />,
-  document.getElementById("root")
-);
-
+var Shop = Backbone.Model.extend({
+  brand: 'Rolex',
+  type: 'Wrist Watch',
+  price: 900
+  stock: 8
+});
 ```
 
-### Props
-
-`Props` is the short form for `properties`. Properties are attributes of a component. In fact, props are how components talk to each other. A tag in HTML such as `<img>` has an attribute, a.k.a `prop` called `src` that points to the location of an image.
-
-In React, you can have two components, `FatherComponent` and `SonComponent`. Let's see how they can talk to each other.
+We can also add `default attributes` to the Model like below:
 
 ```js
-
-class FatherComponent extends React.Component {
-   render() {
-      return <SonComponent quality="eye balls" />;
-   }
-}
-
+var Shop = Backbone.Model.extend({
+  defaults: {
+    brand: '',
+    type: '',
+    price: 900
+    stock: 0
+  }
+});
 ```
 
-_FatherComponent_
+Now, we can call `get` and `set` methods on an instance of the Shop model. If we want to fetch the brand of the gift, we will retrieve it with this:
 
 ```js
 
-class SonComponent extends React.Component {
-    render() {
-      return <p> I am a true son. I have my father's "{ this.props.quality }" . </p>;
+var firstShop = new Shop({
+  brand: 'Rolex',
+  type: 'Wrist Watch',
+  price: 900
+  stock: 8
+});
+
+var secondShop = new Shop({
+  brand: 'Michael Korrs',
+  type: 'Wrist Watch',
+  price: 400
+  stock: 16
+});
+
+
+firstShop.get('brand');
+// Rolex
+secondShop.get('brand');
+// Michael Korrs
+```
+
+Let's look at another practical case. If we need to create a new user on the backend, we can instantiate a new User Model and call the `save` method.
+
+```js
+var UserModel = Backbone.Model.extend({
+    urlRoot: '/user',
+    defaults: {
+      name: '',
+      email: ''
     }
-}
+});
 
+var user = new UserModel();
+// Notice that we haven't set an `id`
+var userDetails = {
+    name: 'Prosper',
+    email: 'unicodeveloper@gmail.com'
+};
+
+// Because we have not set a `id` the server will call
+// POST /user with a payload of { name:'Prosper', email: 'unicodeveloper@gmail.com'}
+// The server should save the data and return a response containing the new `id`
+user.save(userDetails, {
+    success: function (user) {
+        alert(JSON.stringify(user));
+    }
+});
 ```
 
-_SonComponent_
-
-Now, when the page is served and a `<FatherComponent>` is called, `I am a true son. I have my father's eyes` will be rendered on the page.
-
-### State
-
-When developing *ReactJS* applications, it is important to know when and when not to use state in components. The question now is: *When do I use state?*, *When do I use props?*  Props are data that the component depends on to render correctly. Most times, it comes from above, meaning it is passed down from a parent component to a child component. Like `props`, `state` holds information about the component but it is handled differently.For example, the number of times a button was clicked, user input from a form, etc. When state changes in a component, the component automatically re-renders and updates the DOM.
-
-Inside a component, state is managed using a `setState` function.
+We can fetch the details of a user that has been created with an id with the code below:
 
 ```js
+var user = new UserModel({id: 1});
 
-class Layout extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      position: "right"
-    };
-  }
+// The fetch below will perform GET /user/1
+// The server should return the id, name and email from the database
+user.fetch({
+    success: function (user) {
+        alert(JSON.stringify(user));
+    }
+});
+```
 
-  render() {
-    return (
-      { this.state.position }
-    )
+Updating the User Model will look like this:
+
+```js
+...
+...
+user.save({name: 'Goodness'}, {
+  success: function (model) {
+    alert(JSON.stringify(user));
   }
-}
+});
+```
+
+### Collections
+
+Collections are ordered sets of models. You can bind some events to be notified when any model in the collection has been modified. Events such as `change`, `add`, `remove`.
+
+Let's create a Backbone collection and add models to it.
+
+```js
+var ShopCollection = Backbone.Collection.extend({
+
+});
+```
+
+Now, we can set the `Shop` model to our collection like this:
+
+```js
+var ShopCollection = Backbone.Collection.extend({
+  model: Shop
+});
+```
+
+The next thing will be to instantiate the Collection and the instances of our models like this:
+
+```js
+var ShopCollection = new ShopCollection;
+ShopCollection.add(firstShop);
+ShopCollection.add(secondShop);
+```
+
+To access the models in the collection, you can use `each`, one of the Underscore methods available to loop over the collection and present the data to the screen. During the iteration, you can perform model methods like `get/set` on each model.
+
+```js
+ShopCollection.each((shop) => {
+   ...
+   shop.get('brand');
+   shop.get('stock');
+   ...
+});
+```
+
+Other popular methods you can use on a collection are [toJSON](http://backbonejs.org/#Collection-toJSON), and [sync](http://backbonejs.org/#Collection-sync).
+
+### Views
+
+Backbone views can be used with any JavaScript templating library. It is unopinionated about the process used to render View objects and their subviews into UI. The views handle user input and interactivity, renders data from the model and also sends captureed input back to the model.
+
+The views listen to the model "change" events, and react or re-render themselves appropriately.
+
+**Note:** Templates allow us to render the User Interface as an alternative to direct DOM manipulation.
+
+```js
+var PersonView = Backbone.View.extend({
+
+   tagName: 'li',
+
+   initialize: function(){
+     this.render();
+   },
+
+   render: function(){
+     this.$el.html( this.model.get('name') + ' (' + this.model.get('age') + ') - ' + this.model.get('occupation') );
+  }
+});
+```
+
+Now, let's use a template
+
+```
+var Person = Backbone.Model.extend({
+    defaults: {
+        name: 'Prosper Otemuyiwa',
+        age: 23,
+        occupation: 'Evangelist'
+    }
+});
+
+var PersonView = Backbone.View.extend({
+    tagName: 'li',
+
+    my_template: _.template("<strong><%= name %></strong> (<%= age %>) - <%= occupation %>"),
+
+    initialize: function(){
+        this.render();
+    },
+
+    render: function(){
+        this.$el.html( this.my_template(this.model.toJSON()));
+    }
+});
+```
+
+### Events
+
+Events is a module that can be mixed in to any object, giving the object the ability to bind and trigger custom named events.
+
+```js
+var object = {};
+_.extend(object, Backbone.Events);
+object.on("alert", function(msg) { alert("Triggered " + msg); });
+object.trigger("alert", "an event");
+```
+
+In the code above, we copied all of Backbone's events to a JavaScript object using the extend functionality of underscore. So we listen on `alert` Backbone event and then trigger the event.
+
+Let's try something more practical. Say we have a UserModel,
+
+```js
+var UserModel = Backbone.Model.extend({
+
+    initialize: function(){
+        this.on('change',this.someChange,this);
+    },
+
+    defaults : {
+        name : '',
+        email : ''
+    },
+
+    someChange: function(model,options) {
+      alert(‘something has changed’);
+    }
+
+});
 
 ```
 
 ```js
-
-class Button extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      count: 0,
-    };
-  }
-
-  updateCount() {
-    this.setState((prevState, props) => {
-      return { count: prevState.count + 1 }
-    });
-  }
-
-  render() {
-    return (
-      <button onClick={() => this.updateCount()} >
-        Clicked {this.state.count} times
-      </button>
-    );
-  }
-}
-
+var newUser = new UserModel({ name:’Raymond Igoladebayi’, email: 'raymond@waya.com'});
+newUser.set(‘email’, 'ppp@ppp.com’); // this will trigger the `change` event
 ```
 
-Now, this works great for simple applications like the one we'll build in this tutorial. For medium and large apps, it is recommended to use a state management library like [Redux](http://redux.js.org) or [MobX](https://github.com/mobxjs/mobx) to avoid big balls of messy code and also to help you track every event happening within your app.
+In the code above, the user model will now listen to change events on itself. Once you set the name to another value, it triggers the change event that calls the `someChange` function.
 
-### JSX
-
-Initially, looking at JSX seems awkward. JSX is the combination of HTML and JavaScript code in the same file. You can decide to name the extension of the file `.jsx` or just `.js`. An example of JSX is:
+In Backbone, you can also listen to just a specific attribute change. For example, we can listen to only `title` attribute change. How? We simply chain it with a colon like so: `change:title`.
 
 ```js
-
-class Layout extends React.Component {
-  render() {
-    return <p>Hello {this.props.layoutStructure ?  'Frontend layout' : 'Backend Layout'}</p>;
-  }
-}
-
+...
+this.on('change:title', this.someChange, this);
+...
 ```
 
-You can check out more [information on JSX here](https://facebook.github.io/react/docs/introducing-jsx.html).
+The `change` event is only triggered whenever the title changes. And then calls the `someChange` function.
 
-Next, let's build an application with *ReactJS*.
+We also have built-in events that occur on collections. Check out the [catalog](http://backbonejs.org/#Events-catalog) of built-in Backbone events.
 
 ## Our App: Chuck Norris World
 
 ![Chuck Norris World](https://cdn.auth0.com/blog/react/app.png)
 
-The app we will build today is called Chuck Norris World. Our app is an eye into the world of Chuck Norris and his greatness. The Chuck Norris World app will display different jokes about the legend. A list of common food jokes will be available to the general public, while the celebrity jokes will only be accessible to registered members. 
+The app we will build today is called Chuck Norris World. Our app is an eye into the world of Chuck Norris and his greatness. The Chuck Norris World app will display different jokes about the legend. A list of common food jokes will be available to the general public, while the celebrity jokes will only be accessible to registered members.
 
 **Note:** These days, celebrities demand a lot of cash for jokes made at their expense, and Chuck Norris isn't helping matters. Always cracking jokes about them, sigh!
 
@@ -235,11 +321,11 @@ The app we will build today is called Chuck Norris World. Our app is an eye into
 
 Let's build an API to serve the list of jokes to our app. We'll quickly build the API with [Node.js](https://nodejs.org). The API is simple. This is what we need:
 
-* An endpoint to serve jokes about food - `/api/jokes/food`. 
+* An endpoint to serve jokes about food - `/api/jokes/food`.
 * An endpoint to serve jokes about celebrities - `/api/jokes/celebrity`.
 * Secure the endpoint that serves celebrity jokes, so that it can only be accessed by registered users.
 
-Go ahead and fetch the [Node.js backend from GitHub](https://github.com/auth0-blog/reactjs-authentication-tutorial/tree/master/server). 
+Go ahead and fetch the [Node.js backend from GitHub](https://github.com/auth0-blog/reactjs-authentication-tutorial/tree/master/server).
 
 Your `server.js` should look like this:
 
@@ -297,7 +383,7 @@ app.get('/api/jokes/food', (req, res) => {
   {
     id: 99996,
     joke: 'When Chuck Norris goes to out to eat, he orders a whole chicken, but he only eats its soul.'
-  } 
+  }
   ];
   res.json(foodJokes);
 })
@@ -327,7 +413,7 @@ app.get('/api/jokes/celebrity', (req,res) => {
   {
     id: 88886,
     joke: "Hellen Keller's favorite color is Chuck Norris."
-  } 
+  }
   ];
   res.json(CelebrityJokes);
 })
@@ -638,7 +724,7 @@ Now, we took advantage of one of the **ReactJS** lifecycle hooks, `componentDidM
 
 All we are trying to do is tell **ReactJS** to load the data from the API immediately the `FoodJokes` component gets rendered.
 
-Finally, we rendered the component with the **ReactJS** `render` method. This is the method that does the actual rendering on the screen.  As seen in the code below, we extracted the loaded jokes from the state into a `jokes` constant. 
+Finally, we rendered the component with the **ReactJS** `render` method. This is the method that does the actual rendering on the screen.  As seen in the code below, we extracted the loaded jokes from the state into a `jokes` constant.
 
 We looped through the `jokes` constant which is now an array to display the contents on the screen.
 
@@ -714,7 +800,7 @@ class CelebrityJokes extends Component {
                 </div>
               </div>
           ))}
-  
+
         <div className="col-sm-12">
           <div className="jumbotron text-center">
             <h2>View Food Jokes</h2>
@@ -910,7 +996,7 @@ app.get('/api/jokes/celebrity', authCheck, (req,res) => {
   {
     id: 88886,
     joke: "Hellen Keller's favorite color is Chuck Norris."
-  } 
+  }
   ];
   res.json(CelebrityJokes);
 })
@@ -1037,7 +1123,7 @@ function isTokenExpired(token) {
 }
 ```
 
-In the code above, we are using an hosted version of Auth0 Lock in the `login` method and passed in our credentials. 
+In the code above, we are using an hosted version of Auth0 Lock in the `login` method and passed in our credentials.
 
 The auth0 package calls the Auth0's `authorize` endpoint. With all the details we passed to the method, our client app will be validated and authorized to perform authentication. You can learn more about the specific values that can be passed to the authorize method [here](https://auth0.com/docs/libraries/auth0js/v8#login).
 
@@ -1062,7 +1148,7 @@ Let's quickly go ahead to change the title of the client to `Chuck Norris World`
 
 > Changing the Client name is totally optional.
 
-Copy the **CLIENT ID** and replace it with the value of `AUTH0_CLIENT_ID` in the variable `CLIENT_ID`. Replace your callback url with `http://localhost:3000/callback`. Don't forget to add that to the **Allowed Callback URLs** and `http://localhost:3000` to the **Allowed Origins (CORS)**. 
+Copy the **CLIENT ID** and replace it with the value of `AUTH0_CLIENT_ID` in the variable `CLIENT_ID`. Replace your callback url with `http://localhost:3000/callback`. Don't forget to add that to the **Allowed Callback URLs** and `http://localhost:3000` to the **Allowed Origins (CORS)**.
 
 We also checked whether the token has expired via the `getTokenExpirationDate` and `isTokenExpired` methods. The `isLoggedIn` method returns `true` or `false` based on the presence and validity of a user `id_token`.
 
@@ -1092,15 +1178,15 @@ class Nav extends Component {
             <Link to="/">Food Jokes</Link>
           </li>
           <li>
-            { 
+            {
              ( isLoggedIn() ) ? <Link to="/special">Celebrity Jokes</Link> :  ''
             }
-          
+
           </li>
         </ul>
         <ul className="nav navbar-nav navbar-right">
           <li>
-           { 
+           {
              (isLoggedIn()) ? ( <button className="btn btn-danger log" onClick={() => logout()}>Log out </button> ) : ( <button className="btn btn-info log" onClick={() => login()}>Log In</button> )
            }
           </li>
@@ -1112,7 +1198,7 @@ class Nav extends Component {
 
 export default Nav;
 
-``` 
+```
 _Nav.js_
 
 > **Note:** We used an arrow function to wrap and execute the onClick handlers like so: `{() => login()}` . Check out how to [handle events in react with arrow function](https://medium.com/@machnicki/handle-events-in-react-with-arrow-functions-ede88184bbb#.ekwwbituw) to understand why we used arrow functions.
@@ -1320,15 +1406,15 @@ function getCelebrityData() {
 
 The `/api/jokes/celebrity` endpoint will receive the token in the header and validate the user. If it is valid, the content will be provided to us.
 
-Now, try to log in again. 
+Now, try to log in again.
 
 ![Working Chuck Norris World App](https://cdn.auth0.com/blog/react/working_chuck_norris_app.gif)
 _Working Chuck Norris World App_
 
-Everything is working fine. Pat yourself on the back. You have just successfully built a **ReactJS** app and added authentication to it! 
+Everything is working fine. Pat yourself on the back. You have just successfully built a **ReactJS** app and added authentication to it!
 
 ## Conclusion
 
-**ReactJS** is an awesome front-end library to employ in building your user interfaces. It takes advantage of the Virtual DOM, it is fast and it has a bubbling community. There are several React plugins/addons that the community provides to allow you do almost anything in **ReactJS**. 
+**ReactJS** is an awesome front-end library to employ in building your user interfaces. It takes advantage of the Virtual DOM, it is fast and it has a bubbling community. There are several React plugins/addons that the community provides to allow you do almost anything in **ReactJS**.
 
 In addition, Auth0 can help secure your **ReactJS** apps with more than just username-password authentication. It provides features like [multifactor auth](https://auth0.com/docs/multifactor-authentication), [anomaly detection](https://auth0.com/docs/anomaly-detection), [enterprise federation](https://auth0.com/docs/identityproviders), [single sign on (SSO)](https://auth0.com/docs/sso), and more. [Sign up](javascript:signup\(\)) today so you can focus on building features unique to your app.
