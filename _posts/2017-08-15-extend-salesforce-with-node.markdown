@@ -23,6 +23,11 @@ related:
   - 2017-05-16-introducing-auth0-extend-the-new-way-to-extend-your-saas
   - 2017-05-19-serverless-webhooks-with-auth0-extend
   - 2016-06-28-building-serverless-apps-with-webtask
+banner: 
+  action: https://auth0.com/extend/salesforce/app
+  text: Extend for Salesforce with Node 8
+  cta: Try It Out
+
 ---
 
 **tl;dr**: Extend for Salesforce lets you implement triggers in Node 8 with full access to 400k NPM modules. Check it out [auth0.com/extend/salesforce](https://auth0.com/extend/salesforce).
