@@ -25,6 +25,10 @@ related:
   - 2016-06-28-building-serverless-apps-with-webtask
 ---
 
+**tl;dr**: Extend for Salesforce lets you implement triggers in Node 8 with full access to 400k NPM modules. Check it out [auth0.com/extend/salesforce](https://auth0.com/extend/salesforce).
+
+---
+
 Salesforce is a powerful and mature SaaS CRM platform that developers can customize to meet their organization's business needs. For instance, you can author custom triggers which attach to the lifecycle of Salesforce objects. One catch, you need to learn Apex. If you are a NodeJS/Javascript developer, who has never worked with Apex, this can be a big jump. You need to move to a new language and ecosystem. That is until now.
 
 We want to enable NodeJS developers to harness the power of the Salesforce platform using the language and ecosystem they already know.
