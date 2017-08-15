@@ -24,7 +24,7 @@ related:
   - 2017-05-19-serverless-webhooks-with-auth0-extend
   - 2016-06-28-building-serverless-apps-with-webtask
 banner: 
-  action: https://auth0.com/extend/salesforce/app
+  action: https://auth0.com/extend/salesforce
   text: Extend for Salesforce with Node 8
   cta: Try It Out
 
