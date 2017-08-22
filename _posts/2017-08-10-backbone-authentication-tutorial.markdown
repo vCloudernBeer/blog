@@ -10,8 +10,8 @@ author:
   avatar: https://en.gravatar.com/avatar/1097492785caf9ffeebffeb624202d8f?s=200
   mail: prosper.otemuyiwa@auth0.com
 design:
-  bg_color: "#222425"
-  image: https://cdn.auth0.com/blog/blog/React-logo.png
+  bg_color: "#002A41"
+  image: https://cdn.auth0.com/blog/backbone/gettingstarted.png
 tags:
 - backbonejs
 - backbone
