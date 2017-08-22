@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "BackboneJS: Getting Started"
-description: Learn how to quickly build apps with BackboneJS and add authentication the right way.
+description: Learn how to quickly build apps with BackboneJS.
 date: 2017-02-21 8:30
 category: Technical Guide, Frontend, BackboneJS
 author:
