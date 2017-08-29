@@ -278,8 +278,8 @@ var UserModel = Backbone.Model.extend({
     },
 
     defaults : {
-        name : '',
-        email : ''
+      name : '',
+      email : ''
     },
 
     someChange: function(model,options) {
