@@ -12,8 +12,8 @@ author:
   avatar: https://avatars3.githubusercontent.com/u/604869?v=3&s=200
   mail: diego.poza@auth0.com
 design:
-  image: 
-  bg_color: "#"
+  image: https://cdn.auth0.com/blog/modernize-legacy-system/logo.png
+  bg_color: "#2B3990"
 tags:
 - legacy
 - modernization
@@ -42,7 +42,7 @@ Legacy systems are structures that run on outdated technology, but that a compan
 
 
 ![How legacy systems hurt you](https://cdn.auth0.com/blog/modernize-legacy-system/legacy-systems-dilbert.png)
-_[Source](http://dilbert.com/strip/2006-12-08)]_
+[*[source](http://dilbert.com/strip/2006-12-08)*]
 
 * Legacy systems often have backdoors to databases built in, making you an easy target for hackers.
 * As your system accumulates little patches over time, it becomes more complicated and more prone to breakages.
@@ -55,7 +55,7 @@ For example, a football stats app may not want to make drastic changes which cou
 But the issues with legacy systems will get larger and larger over time—the longer you wait, the more entrenched you'll be, and the less vendor support you'll have during a switch.
 
 ![How legacy systems problems get bigger and bigger](https://cdn.auth0.com/blog/modernize-legacy-system/legacy-system-dilbert-02.png)
-_[source](http://dilbert.com/strip/2017-02-22)_
+[*[source](http://dilbert.com/strip/2017-02-22)*]
 
 In addition to all the other problems above, legacy systems can cause you to miss out on new security protocols. In an area near and dear to our hearts, [authentication](https://auth0.com/blog/is-passwordless-authentication-more-secure-than-passwords/), legacy systems using sessions and cookies no longer cut it with modern applications.
 
